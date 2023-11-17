@@ -156,7 +156,7 @@ legend('OL','CLinf','CLnc','CLar','location','SouthEast')
 title(''); %title('Road to susp. deflection')
 if exist('garyfyFigure','file'); garyfyFigure; end
 
-%% Robust Mu Design
+%% Robust Regret Design
 % Compute a robust additive regret controller and compare performance.
 
 % Robust additive regret

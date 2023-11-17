@@ -37,6 +37,12 @@ Ts = P.Ts;
 if gamJ == 0
     F = ss( gamd*eye(Nd) );
     F.Ts = Ts;
+% elseif 1    
+%     % Use built-in spectral factorization code from Matlab.
+%     % This will not yield a minimal (order Nx) realization, in general.
+%     % However, it seems to be a better conditioned numerical method.
+%     [GG,SS] = spectralfact(gamd^2*eye(Nd)+gamJ^2*CL'*CL); 
+%     F = sqrtm(SS)*GG;
 else
     % Solve first DARE. This factorizes the zeros.
     Qhat = Chat'*Chat;

@@ -81,6 +81,13 @@ Pfi = P(1:Ne,:);
 % Compute spectral factor associated with regret bound
 F = regretsf(Pfi,Nu,gamtry);
 
+% 11/6/2023 PJS:
+% F can be ill-conditioned and this can cause numerical issues, e.g.
+% the subsequent HINFSYN call fails to find a stabilizing controller 
+% with gain <1 eventhough one exists.  The balanced form of F is better 
+% conditioned and seems to alleviate these numerical issues.
+% F = balreal(F);
+
 % Solve H-infinty problem scaled by F
 Pf = P*blkdiag( inv(F), eye(Nu) );
 gaminf = 1;
